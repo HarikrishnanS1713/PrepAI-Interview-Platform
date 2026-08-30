@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Technical Quiz – PrepAI</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+<div class="dashboard-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo">⬡ PrepAI</div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
+      <a href="mock-interview.html"><i class="fas fa-comments"></i> Mock Interview</a>
+      <a href="technical-quiz.html" class="active"><i class="fas fa-code"></i> Technical Quiz</a>
+      <a href="aptitude-test.html"><i class="fas fa-calculator"></i> Aptitude Test</a>
+      <a href="hr-prep.html"><i class="fas fa-users"></i> HR Prep</a>
+      <a href="performance.html"><i class="fas fa-chart-line"></i> Performance</a>
+      <a href="history.html"><i class="fas fa-history"></i> History</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="../index.html" style="font-size:0.82rem;color:var(--text-muted);text-align:center;display:block;">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-header">
+      <h1>Technical Quiz</h1>
+      <p>MCQ-based questions on programming concepts, DSA, databases, and OS.</p>
+    </div>
+
+    <!-- Setup -->
+    <div class="card" id="quizSetup">
+      <div class="card-header"><span class="card-title">Quiz Settings</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;">
+        <div class="form-group">
+          <label>Topic</label>
+          <select id="quizTopic">
+            <option value="dsa">Data Structures & Algorithms</option>
+            <option value="oop">Object-Oriented Programming</option>
+            <option value="dbms">Database Management</option>
+            <option value="os">Operating Systems</option>
+            <option value="networking">Computer Networks</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Number of Questions</label>
+          <select id="quizCount">
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="15">15</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Time per Question</label>
+          <select id="quizTime">
+            <option value="30">30 seconds</option>
+            <option value="60" selected>60 seconds</option>
+            <option value="90">90 seconds</option>
+            <option value="0">No timer</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="startQuiz()"><i class="fas fa-play"></i> Start Quiz</button>
+    </div>
+
+    <!-- Quiz Panel -->
+    <div id="quizPanel" style="display:none;">
+      <div class="card" style="margin-bottom:16px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+          <div>
+            <span style="font-size:0.85rem;color:var(--text-muted);">Question <span id="qNum">1</span>/<span id="qTotal">10</span></span>
+            <div class="progress-bar-wrap" style="width:200px;margin-top:6px;">
+              <div class="progress-bar-fill" id="qProgress" style="width:10%;"></div>
+            </div>
+          </div>
+          <div class="timer-display" id="timerDisplay"><i class="fas fa-clock"></i> <span id="timerVal">60</span>s</div>
+        </div>
+      </div>
+
+      <div class="interview-session">
+        <div class="question-content" id="quizQuestion" style="margin-bottom:24px;font-size:1rem;line-height:1.7;"></div>
+        <div class="quiz-options" id="quizOptions"></div>
+        <div id="quizExplanation" style="display:none;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:16px;font-size:0.88rem;color:var(--text-muted);line-height:1.7;"></div>
+        <button class="btn-primary" id="nextQBtn" onclick="nextQuizQ()" style="display:none;">Next Question →</button>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="card" id="quizResults" style="display:none;">
+      <div style="text-align:center;padding:24px 0;">
+        <div style="font-size:3rem;margin-bottom:12px;" id="resultEmoji">🎯</div>
+        <h2 style="font-family:var(--font-display);font-size:1.8rem;margin-bottom:8px;">Quiz Complete!</h2>
+        <div class="feedback-scores" style="justify-content:center;margin:20px 0;" id="quizResultScores"></div>
+        <div id="quizReviewList" style="text-align:left;max-width:600px;margin:0 auto 24px;"></div>
+        <div style="display:flex;gap:12px;justify-content:center;">
+          <button class="btn-primary" onclick="location.reload()">Try Again</button>
+          <a href="performance.html"><button class="btn-secondary">View Analytics</button></a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="../js/technical-quiz.js"></script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PrepAI – AI Interview Preparation Platform</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body class="landing-page">
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-logo"><span class="logo-icon">⬡</span> PrepAI</div>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#domains">Domains</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="pages/login.html" class="btn-nav">Login</a></li>
+      <li><a href="pages/register.html" class="btn-nav btn-primary-nav">Get Started</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge"><span class="pulse-dot"></span> AI-Powered Feedback Engine</div>
+      <h1 class="hero-title">Ace Every<br/><span class="gradient-text">Interview</span><br/>With AI Coaching</h1>
+      <p class="hero-sub">Practice mock interviews, technical quizzes, and aptitude tests. Get real-time AI feedback to sharpen your skills and land your dream job.</p>
+      <div class="hero-cta">
+        <a href="pages/register.html" class="btn-hero-primary">Start Practicing Free</a>
+        <a href="#how-it-works" class="btn-hero-ghost"><i class="fas fa-play-circle"></i> See How It Works</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">10K+</span><span class="stat-label">Questions</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">5K+</span><span class="stat-label">Users</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">95%</span><span class="stat-label">Success Rate</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="mock-card">
+        <div class="mock-card-header"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span style="margin-left:8px;font-size:12px;color:#aaa;">AI Interview Session</span></div>
+        <div class="mock-question"><i class="fas fa-robot" style="color:#6ee7b7;margin-right:8px;"></i>Tell me about your experience with data structures.</div>
+        <div class="mock-answer-box">
+          <div class="typing-text" id="typingText"></div>
+          <span class="cursor-blink">|</span>
+        </div>
+        <div class="mock-feedback">
+          <div class="feedback-bar"><span>Clarity</span><div class="bar"><div class="bar-fill" style="width:82%;background:#6ee7b7;"></div></div><span>82%</span></div>
+          <div class="feedback-bar"><span>Depth</span><div class="bar"><div class="bar-fill" style="width:67%;background:#60a5fa;"></div></div><span>67%</span></div>
+          <div class="feedback-bar"><span>Confidence</span><div class="bar"><div class="bar-fill" style="width:74%;background:#f59e0b;"></div></div><span>74%</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="section-label">CAPABILITIES</div>
+    <h2 class="section-title">Everything You Need to Prepare</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#6ee7b720;color:#6ee7b7;"><i class="fas fa-brain"></i></div>
+        <h3>AI-Powered Feedback</h3>
+        <p>Get instant, intelligent analysis of your answers with suggestions to improve clarity, depth, and communication.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#60a5fa20;color:#60a5fa;"><i class="fas fa-code"></i></div>
+        <h3>Technical Quizzes</h3>
+        <p>Domain-specific coding questions covering DSA, OOP, databases, OS, networking, and more.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#f59e0b20;color:#f59e0b;"><i class="fas fa-users"></i></div>
+        <h3>HR Interview Prep</h3>
+        <p>Practice behavioral and situational questions with guidance on the STAR method and storytelling techniques.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#a78bfa20;color:#a78bfa;"><i class="fas fa-calculator"></i></div>
+        <h3>Aptitude Tests</h3>
+        <p>Quantitative, logical reasoning, and verbal ability tests with timed challenges and detailed solutions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#f472b620;color:#f472b6;"><i class="fas fa-chart-line"></i></div>
+        <h3>Progress Analytics</h3>
+        <p>Track your improvement over time with detailed performance reports and personalized study recommendations.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#34d39920;color:#34d399;"><i class="fas fa-history"></i></div>
+        <h3>Session History</h3>
+        <p>Review past interview sessions, revisit questions, and see how your performance has evolved.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Domains Section -->
+  <section class="domains" id="domains">
+    <div class="section-label">DOMAINS</div>
+    <h2 class="section-title">Practice Across Every Domain</h2>
+    <div class="domains-grid">
+      <div class="domain-card" style="--accent:#6ee7b7;">
+        <i class="fas fa-laptop-code"></i>
+        <h4>Programming</h4>
+        <p>Python, Java, C++, JavaScript</p>
+      </div>
+      <div class="domain-card" style="--accent:#60a5fa;">
+        <i class="fas fa-database"></i>
+        <h4>Databases</h4>
+        <p>SQL, MySQL, NoSQL concepts</p>
+      </div>
+      <div class="domain-card" style="--accent:#f59e0b;">
+        <i class="fas fa-network-wired"></i>
+        <h4>Networking</h4>
+        <p>TCP/IP, DNS, HTTP protocols</p>
+      </div>
+      <div class="domain-card" style="--accent:#a78bfa;">
+        <i class="fas fa-microchip"></i>
+        <h4>OS Concepts</h4>
+        <p>Processes, memory, scheduling</p>
+      </div>
+      <div class="domain-card" style="--accent:#f472b6;">
+        <i class="fas fa-sitemap"></i>
+        <h4>Data Structures</h4>
+        <p>Arrays, trees, graphs, heaps</p>
+      </div>
+      <div class="domain-card" style="--accent:#34d399;">
+        <i class="fas fa-handshake"></i>
+        <h4>HR & Soft Skills</h4>
+        <p>Behavioral, leadership, teamwork</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="section-label">PROCESS</div>
+    <h2 class="section-title">How PrepAI Works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Create Account</h4>
+        <p>Sign up and set your target domain, experience level, and interview goals.</p>
+      </div>
+      <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Choose Practice Mode</h4>
+        <p>Select from mock interviews, technical quizzes, aptitude tests, or HR prep.</p>
+      </div>
+      <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Get AI Feedback</h4>
+        <p>Submit answers and receive instant AI-generated analysis and improvement tips.</p>
+      </div>
+      <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4>Track Progress</h4>
+        <p>View detailed analytics and watch your scores improve session by session.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo"><span class="logo-icon">⬡</span> PrepAI</div>
+    <p>AI-Powered Interview Preparation for Students & Job Seekers</p>
+    <div class="footer-links">
+      <a href="pages/login.html">Login</a>
+      <a href="pages/register.html">Register</a>
+      <a href="#">Privacy</a>
+      <a href="#">Contact</a>
+    </div>
+    <p class="footer-copy">© 2024 PrepAI Platform. All rights reserved.</p>
+  </footer>
+
+  <script src="js/landing.js"></script>
+</body>
+</html>

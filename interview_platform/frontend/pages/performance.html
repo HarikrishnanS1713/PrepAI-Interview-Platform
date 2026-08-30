@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Performance – PrepAI</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+<div class="dashboard-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo">⬡ PrepAI</div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
+      <a href="mock-interview.html"><i class="fas fa-comments"></i> Mock Interview</a>
+      <a href="technical-quiz.html"><i class="fas fa-code"></i> Technical Quiz</a>
+      <a href="aptitude-test.html"><i class="fas fa-calculator"></i> Aptitude Test</a>
+      <a href="hr-prep.html"><i class="fas fa-users"></i> HR Prep</a>
+      <a href="performance.html" class="active"><i class="fas fa-chart-line"></i> Performance</a>
+      <a href="history.html"><i class="fas fa-history"></i> History</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="../index.html" style="font-size:0.82rem;color:var(--text-muted);text-align:center;display:block;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-header">
+      <h1>Performance Analytics</h1>
+      <p>Track your progress across all practice sessions and identify areas to improve.</p>
+    </div>
+
+    <div class="stats-row" id="perfStats">
+      <div class="stat-card"><div class="stat-card-icon" style="background:rgba(110,231,183,0.15);color:#6ee7b7;"><i class="fas fa-trophy"></i></div><div><div class="stat-card-val" id="pAvg">–</div><div class="stat-card-label">Overall Avg Score</div></div></div>
+      <div class="stat-card"><div class="stat-card-icon" style="background:rgba(96,165,250,0.15);color:#60a5fa;"><i class="fas fa-layer-group"></i></div><div><div class="stat-card-val" id="pSessions">0</div><div class="stat-card-label">Total Sessions</div></div></div>
+      <div class="stat-card"><div class="stat-card-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b;"><i class="fas fa-question-circle"></i></div><div><div class="stat-card-val" id="pQuestions">0</div><div class="stat-card-label">Questions Practiced</div></div></div>
+      <div class="stat-card"><div class="stat-card-icon" style="background:rgba(167,139,250,0.15);color:#a78bfa;"><i class="fas fa-star"></i></div><div><div class="stat-card-val" id="pBest">–</div><div class="stat-card-label">Best Score</div></div></div>
+    </div>
+
+    <!-- Chart -->
+    <div class="card">
+      <div class="card-header"><span class="card-title">Score Trend</span></div>
+      <canvas id="trendChart" height="80" style="width:100%;"></canvas>
+      <div id="noChartMsg" style="text-align:center;padding:30px;color:var(--text-muted);display:none;">Complete some sessions to see your score trend here.</div>
+    </div>
+
+    <!-- Domain Breakdown -->
+    <div class="analytics-grid">
+      <div class="card">
+        <div class="card-header"><span class="card-title">By Domain</span></div>
+        <div id="domainBreakdown"></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-title">By Session Type</span></div>
+        <div id="typeBreakdown"></div>
+      </div>
+    </div>
+
+    <!-- Recommendations -->
+    <div class="card">
+      <div class="card-header"><span class="card-title">AI Recommendations</span></div>
+      <div id="recommendations" style="color:var(--text-muted);font-size:0.9rem;line-height:1.8;"></div>
+    </div>
+  </main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../js/performance.js"></script>
+</body>
+</html>

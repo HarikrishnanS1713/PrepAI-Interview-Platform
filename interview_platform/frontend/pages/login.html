@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login – PrepAI</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body class="auth-page">
+  <div class="auth-card">
+    <div class="auth-logo">⬡ PrepAI</div>
+    <p class="auth-subtitle">Welcome back! Log in to continue your practice.</p>
+    <div id="alertBox"></div>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="you@example.com" required/>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="••••••••" required/>
+      </div>
+      <button type="submit" class="btn-full" id="loginBtn">
+        <span id="btnText">Log In</span>
+      </button>
+    </form>
+    <div class="auth-switch">
+      Don't have an account? <a href="register.html">Sign up free</a>
+    </div>
+    <div class="auth-switch" style="margin-top:8px;">
+      <a href="../index.html" style="color:var(--text-muted);font-size:0.82rem;">← Back to Home</a>
+    </div>
+  </div>
+  <script src="../js/auth.js"></script>
+</body>
+</html>

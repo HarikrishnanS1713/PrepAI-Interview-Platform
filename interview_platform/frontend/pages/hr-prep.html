@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HR Prep – PrepAI</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+<div class="dashboard-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo">⬡ PrepAI</div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
+      <a href="mock-interview.html"><i class="fas fa-comments"></i> Mock Interview</a>
+      <a href="technical-quiz.html"><i class="fas fa-code"></i> Technical Quiz</a>
+      <a href="aptitude-test.html"><i class="fas fa-calculator"></i> Aptitude Test</a>
+      <a href="hr-prep.html" class="active"><i class="fas fa-users"></i> HR Prep</a>
+      <a href="performance.html"><i class="fas fa-chart-line"></i> Performance</a>
+      <a href="history.html"><i class="fas fa-history"></i> History</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="../index.html" style="font-size:0.82rem;color:var(--text-muted);text-align:center;display:block;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-header">
+      <h1>HR Interview Prep</h1>
+      <p>Practice behavioral questions with the STAR method. Get AI coaching on your answers.</p>
+    </div>
+
+    <!-- STAR Guide -->
+    <div class="card" style="margin-bottom:20px;">
+      <div class="card-header"><span class="card-title">The STAR Method</span></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+        <div style="background:var(--bg3);border-radius:10px;padding:16px;border-left:3px solid #6ee7b7;">
+          <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:800;color:#6ee7b7;">S</div>
+          <div style="font-weight:600;margin-bottom:4px;">Situation</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);">Set the context and background of your example.</div>
+        </div>
+        <div style="background:var(--bg3);border-radius:10px;padding:16px;border-left:3px solid #60a5fa;">
+          <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:800;color:#60a5fa;">T</div>
+          <div style="font-weight:600;margin-bottom:4px;">Task</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);">Describe your responsibility or challenge.</div>
+        </div>
+        <div style="background:var(--bg3);border-radius:10px;padding:16px;border-left:3px solid #f59e0b;">
+          <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:800;color:#f59e0b;">A</div>
+          <div style="font-weight:600;margin-bottom:4px;">Action</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);">Explain the specific steps you took.</div>
+        </div>
+        <div style="background:var(--bg3);border-radius:10px;padding:16px;border-left:3px solid #a78bfa;">
+          <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:800;color:#a78bfa;">R</div>
+          <div style="font-weight:600;margin-bottom:4px;">Result</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);">Share the outcome and what you learned.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question Bank -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">HR Question Bank</span>
+        <div style="display:flex;gap:8px;">
+          <select id="hrCategory" onchange="filterHR()" style="background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:6px 12px;color:var(--text);font-size:0.82rem;">
+            <option value="all">All Categories</option>
+            <option value="behavioral">Behavioral</option>
+            <option value="situational">Situational</option>
+            <option value="motivation">Motivation</option>
+            <option value="teamwork">Teamwork</option>
+          </select>
+        </div>
+      </div>
+      <div id="hrQuestionsList"></div>
+    </div>
+
+    <!-- Practice Modal -->
+    <div id="practiceOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;display:none;align-items:center;justify-content:center;padding:20px;">
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:32px;max-width:620px;width:100%;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;">
+          <span class="question-tag tag-hr" id="modalCategory">Behavioral</span>
+          <button onclick="closePractice()" style="background:none;border:none;color:var(--text-muted);font-size:1.2rem;cursor:pointer;">✕</button>
+        </div>
+        <div id="modalQuestion" class="question-content" style="margin-bottom:20px;font-size:1rem;line-height:1.7;"></div>
+        <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:8px;">Your Answer (use the STAR method)</div>
+        <textarea id="hrAnswer" class="answer-area" placeholder="Situation: ... Task: ... Action: ... Result: ..."></textarea>
+        <div style="display:flex;gap:12px;justify-content:flex-end;">
+          <button class="btn-secondary" onclick="closePractice()">Cancel</button>
+          <button class="btn-primary" onclick="submitHR()">Get AI Feedback</button>
+        </div>
+        <div id="hrFeedback" style="display:none;margin-top:16px;background:var(--bg3);border:1px solid rgba(110,231,183,0.3);border-radius:10px;padding:16px;">
+          <div style="font-weight:700;color:var(--accent);margin-bottom:8px;"><i class="fas fa-robot"></i> AI Feedback</div>
+          <div id="hrFeedbackText" style="font-size:0.88rem;color:var(--text-muted);line-height:1.7;"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="../js/hr-prep.js"></script>
+</body>
+</html>

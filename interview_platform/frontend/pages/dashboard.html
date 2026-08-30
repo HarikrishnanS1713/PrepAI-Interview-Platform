@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard – PrepAI</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-logo">⬡ PrepAI</div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="active"><i class="fas fa-th-large"></i> Dashboard</a>
+        <a href="mock-interview.html"><i class="fas fa-comments"></i> Mock Interview</a>
+        <a href="technical-quiz.html"><i class="fas fa-code"></i> Technical Quiz</a>
+        <a href="aptitude-test.html"><i class="fas fa-calculator"></i> Aptitude Test</a>
+        <a href="hr-prep.html"><i class="fas fa-users"></i> HR Prep</a>
+        <a href="performance.html"><i class="fas fa-chart-line"></i> Performance</a>
+        <a href="history.html"><i class="fas fa-history"></i> History</a>
+        <a href="profile.html"><i class="fas fa-user-circle"></i> Profile</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-user">
+          <div class="user-avatar" id="userAvatarInitial">U</div>
+          <div class="user-info">
+            <div class="user-name" id="sidebarUserName">User</div>
+            <div class="user-role">Student</div>
+          </div>
+        </div>
+        <a href="../index.html" style="display:block;margin-top:14px;font-size:0.82rem;color:var(--text-muted);text-align:center;">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main-content">
+      <div class="page-header">
+        <h1>Good morning, <span id="userName">User</span> 👋</h1>
+        <p>Ready to sharpen your skills? Pick a practice mode and get started.</p>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-card-icon" style="background:rgba(110,231,183,0.15);color:#6ee7b7;">
+            <i class="fas fa-star"></i>
+          </div>
+          <div>
+            <div class="stat-card-val" id="statSessions">0</div>
+            <div class="stat-card-label">Sessions Completed</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon" style="background:rgba(96,165,250,0.15);color:#60a5fa;">
+            <i class="fas fa-bullseye"></i>
+          </div>
+          <div>
+            <div class="stat-card-val" id="statScore">–</div>
+            <div class="stat-card-label">Avg. Score</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b;">
+            <i class="fas fa-fire"></i>
+          </div>
+          <div>
+            <div class="stat-card-val" id="statStreak">0</div>
+            <div class="stat-card-label">Day Streak</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon" style="background:rgba(167,139,250,0.15);color:#a78bfa;">
+            <i class="fas fa-question-circle"></i>
+          </div>
+          <div>
+            <div class="stat-card-val" id="statQuestions">0</div>
+            <div class="stat-card-label">Questions Answered</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Start Cards -->
+      <div class="card">
+        <div class="card-header"><span class="card-title">Quick Start</span></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">
+          <a href="mock-interview.html" class="domain-card" style="--accent:#6ee7b7;text-align:center;">
+            <i class="fas fa-comments" style="font-size:2rem;color:var(--accent);display:block;margin-bottom:10px;"></i>
+            <strong>Mock Interview</strong>
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-top:4px;">AI-powered Q&A</p>
+          </a>
+          <a href="technical-quiz.html" class="domain-card" style="--accent:#60a5fa;text-align:center;">
+            <i class="fas fa-code" style="font-size:2rem;color:#60a5fa;display:block;margin-bottom:10px;"></i>
+            <strong>Technical Quiz</strong>
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-top:4px;">MCQ + coding concepts</p>
+          </a>
+          <a href="aptitude-test.html" class="domain-card" style="--accent:#f59e0b;text-align:center;">
+            <i class="fas fa-calculator" style="font-size:2rem;color:#f59e0b;display:block;margin-bottom:10px;"></i>
+            <strong>Aptitude Test</strong>
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-top:4px;">Quant, logical, verbal</p>
+          </a>
+          <a href="hr-prep.html" class="domain-card" style="--accent:#a78bfa;text-align:center;">
+            <i class="fas fa-users" style="font-size:2rem;color:#a78bfa;display:block;margin-bottom:10px;"></i>
+            <strong>HR Prep</strong>
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-top:4px;">Behavioral questions</p>
+          </a>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Recent Activity</span>
+          <a href="history.html"><button class="btn-sm">View All</button></a>
+        </div>
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>Session</th>
+              <th>Domain</th>
+              <th>Score</th>
+              <th>Status</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="recentActivity">
+            <tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:30px;">No sessions yet. Start practicing!</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>

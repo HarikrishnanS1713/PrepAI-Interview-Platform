@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile – PrepAI</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+<div class="dashboard-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo">⬡ PrepAI</div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
+      <a href="mock-interview.html"><i class="fas fa-comments"></i> Mock Interview</a>
+      <a href="technical-quiz.html"><i class="fas fa-code"></i> Technical Quiz</a>
+      <a href="aptitude-test.html"><i class="fas fa-calculator"></i> Aptitude Test</a>
+      <a href="hr-prep.html"><i class="fas fa-users"></i> HR Prep</a>
+      <a href="performance.html"><i class="fas fa-chart-line"></i> Performance</a>
+      <a href="history.html"><i class="fas fa-history"></i> History</a>
+      <a href="profile.html" class="active"><i class="fas fa-user-circle"></i> Profile</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="../index.html" style="font-size:0.82rem;color:var(--text-muted);text-align:center;display:block;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-header">
+      <h1>My Profile</h1>
+      <p>Manage your account details and preferences.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:300px 1fr;gap:20px;">
+      <!-- Avatar Card -->
+      <div class="card" style="text-align:center;height:fit-content;">
+        <div id="profileAvatar" style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#6ee7b7,#60a5fa);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:2rem;font-weight:800;color:#0a0d14;margin:0 auto 16px;"></div>
+        <div id="profileName" style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:4px;"></div>
+        <div id="profileEmail" style="font-size:0.85rem;color:var(--text-muted);margin-bottom:16px;"></div>
+        <div id="profileBadge" class="question-tag tag-programming" style="display:inline-block;"></div>
+        <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--border);">
+          <div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:8px;">
+            <span style="color:var(--text-muted);">Member since</span>
+            <span id="memberSince">–</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.85rem;">
+            <span style="color:var(--text-muted);">Sessions</span>
+            <span id="profileSessions">0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Edit Form -->
+      <div class="card">
+        <div class="card-header"><span class="card-title">Account Information</span></div>
+        <div id="profileAlert"></div>
+        <form id="profileForm">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" id="pName" required/>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" id="pEmail" required/>
+            </div>
+            <div class="form-group">
+              <label>Target Domain</label>
+              <select id="pDomain">
+                <option value="programming">Programming / Software Engineering</option>
+                <option value="data_science">Data Science / ML</option>
+                <option value="networking">Networking / Systems</option>
+                <option value="management">Management / MBA</option>
+                <option value="general">General / HR</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Experience Level</label>
+              <select id="pExperience">
+                <option value="fresher">Fresher (0–1 year)</option>
+                <option value="junior">Junior (1–3 years)</option>
+                <option value="mid">Mid-level (3–6 years)</option>
+                <option value="senior">Senior (6+ years)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>College / Company</label>
+              <input type="text" id="pOrg" placeholder="e.g. IIT Madras / TCS"/>
+            </div>
+            <div class="form-group">
+              <label>Target Role</label>
+              <input type="text" id="pRole" placeholder="e.g. Software Engineer, Data Analyst"/>
+            </div>
+          </div>
+          <div style="margin-top:8px;">
+            <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Change Password -->
+    <div class="card" style="margin-top:0;">
+      <div class="card-header"><span class="card-title">Change Password</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+        <div class="form-group">
+          <label>Current Password</label>
+          <input type="password" id="curPwd" placeholder="••••••••"/>
+        </div>
+        <div class="form-group">
+          <label>New Password</label>
+          <input type="password" id="newPwd" placeholder="Min. 8 characters"/>
+        </div>
+        <div class="form-group">
+          <label>Confirm New Password</label>
+          <input type="password" id="confPwd" placeholder="Re-enter new password"/>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="changePassword()"><i class="fas fa-lock"></i> Update Password</button>
+    </div>
+
+    <!-- Danger Zone -->
+    <div class="card" style="border-color:rgba(239,68,68,0.2);">
+      <div class="card-header"><span class="card-title" style="color:#ef4444;">Danger Zone</span></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <div>
+          <div style="font-size:0.9rem;font-weight:600;">Clear All Practice Data</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);">Permanently delete all session history and progress data.</div>
+        </div>
+        <button class="btn-sm" style="color:#ef4444;border-color:rgba(239,68,68,0.3);" onclick="clearData()">Clear Data</button>
+      </div>
+    </div>
+  </main>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+  const history = JSON.parse(localStorage.getItem('sessionHistory') || '[]');
+
+  // Fill avatar
+  document.getElementById('profileAvatar').textContent = (user.name || 'U').charAt(0).toUpperCase();
+  document.getElementById('profileName').textContent = user.name || 'User';
+  document.getElementById('profileEmail').textContent = user.email || '';
+  document.getElementById('profileBadge').textContent = (user.domain || 'General').replace('_', ' ');
+  document.getElementById('memberSince').textContent = new Date().toLocaleDateString('en-IN', {month:'long', year:'numeric'});
+  document.getElementById('profileSessions').textContent = history.length;
+
+  // Fill form
+  document.getElementById('pName').value = user.name || '';
+  document.getElementById('pEmail').value = user.email || '';
+  document.getElementById('pDomain').value = user.domain || 'programming';
+  document.getElementById('pExperience').value = user.experience || 'fresher';
+  document.getElementById('pOrg').value = user.org || '';
+  document.getElementById('pRole').value = user.role || '';
+});
+
+document.getElementById('profileForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+  user.name = document.getElementById('pName').value;
+  user.email = document.getElementById('pEmail').value;
+  user.domain = document.getElementById('pDomain').value;
+  user.experience = document.getElementById('pExperience').value;
+  user.org = document.getElementById('pOrg').value;
+  user.role = document.getElementById('pRole').value;
+  localStorage.setItem('user', JSON.stringify(user));
+
+  document.getElementById('profileAvatar').textContent = user.name.charAt(0).toUpperCase();
+  document.getElementById('profileName').textContent = user.name;
+  document.getElementById('profileEmail').textContent = user.email;
+
+  const alert = document.getElementById('profileAlert');
+  alert.innerHTML = '<div class="alert alert-success">Profile updated successfully!</div>';
+  setTimeout(() => alert.innerHTML = '', 3000);
+});
+
+function changePassword() {
+  const cur = document.getElementById('curPwd').value;
+  const nw = document.getElementById('newPwd').value;
+  const conf = document.getElementById('confPwd').value;
+  if (!cur || !nw || !conf) { alert('Please fill all password fields.'); return; }
+  if (nw.length < 8) { alert('New password must be at least 8 characters.'); return; }
+  if (nw !== conf) { alert('New passwords do not match.'); return; }
+  alert('Password updated successfully! (Demo mode)');
+  document.getElementById('curPwd').value = '';
+  document.getElementById('newPwd').value = '';
+  document.getElementById('confPwd').value = '';
+}
+
+function clearData() {
+  if (confirm('Are you sure? This will delete all your practice history permanently.')) {
+    localStorage.removeItem('sessionHistory');
+    document.getElementById('profileSessions').textContent = '0';
+    alert('All practice data has been cleared.');
+  }
+}
+</script>
+</body>
+</html>

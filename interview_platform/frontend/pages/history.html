@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Session History – PrepAI</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+<div class="dashboard-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo">⬡ PrepAI</div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
+      <a href="mock-interview.html"><i class="fas fa-comments"></i> Mock Interview</a>
+      <a href="technical-quiz.html"><i class="fas fa-code"></i> Technical Quiz</a>
+      <a href="aptitude-test.html"><i class="fas fa-calculator"></i> Aptitude Test</a>
+      <a href="hr-prep.html"><i class="fas fa-users"></i> HR Prep</a>
+      <a href="performance.html"><i class="fas fa-chart-line"></i> Performance</a>
+      <a href="history.html" class="active"><i class="fas fa-history"></i> History</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="../index.html" style="font-size:0.82rem;color:var(--text-muted);text-align:center;display:block;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-header">
+      <h1>Session History</h1>
+      <p>Review all your past practice sessions and track your improvement over time.</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="card" style="padding:16px 24px;">
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+        <select id="filterType" onchange="renderHistory()" style="background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:8px 12px;color:var(--text);font-size:0.85rem;font-family:var(--font-body);">
+          <option value="all">All Types</option>
+          <option value="Mock Interview">Mock Interview</option>
+          <option value="Technical Quiz">Technical Quiz</option>
+          <option value="Aptitude Test">Aptitude Test</option>
+        </select>
+        <select id="filterScore" onchange="renderHistory()" style="background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:8px 12px;color:var(--text);font-size:0.85rem;font-family:var(--font-body);">
+          <option value="all">All Scores</option>
+          <option value="pass">Pass (≥60%)</option>
+          <option value="fail">Fail (&lt;60%)</option>
+        </select>
+        <button class="btn-sm" style="margin-left:auto;color:#ef4444;border-color:rgba(239,68,68,0.3);" onclick="clearHistory()">
+          <i class="fas fa-trash"></i> Clear All
+        </button>
+      </div>
+    </div>
+
+    <!-- History Table -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">All Sessions</span>
+        <span id="historyCount" style="font-size:0.82rem;color:var(--text-muted);">0 sessions</span>
+      </div>
+      <div id="historyTableWrap">
+        <table class="history-table" id="historyTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Session Type</th>
+              <th>Domain</th>
+              <th>Questions</th>
+              <th>Score</th>
+              <th>Status</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="historyBody"></tbody>
+        </table>
+        <div id="emptyHistory" style="text-align:center;padding:48px;color:var(--text-muted);display:none;">
+          <i class="fas fa-history" style="font-size:2.5rem;margin-bottom:12px;opacity:0.3;display:block;"></i>
+          No sessions found. Start practicing to build your history!
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script>
+function renderHistory() {
+  const history = JSON.parse(localStorage.getItem('sessionHistory') || '[]');
+  const typeFilter = document.getElementById('filterType').value;
+  const scoreFilter = document.getElementById('filterScore').value;
+
+  let filtered = history.filter(h => {
+    const typeMatch = typeFilter === 'all' || h.type === typeFilter;
+    const scoreMatch = scoreFilter === 'all' ||
+      (scoreFilter === 'pass' && h.score >= 60) ||
+      (scoreFilter === 'fail' && h.score < 60);
+    return typeMatch && scoreMatch;
+  });
+
+  document.getElementById('historyCount').textContent = `${filtered.length} session${filtered.length !== 1 ? 's' : ''}`;
+
+  const body = document.getElementById('historyBody');
+  const empty = document.getElementById('emptyHistory');
+
+  if (!filtered.length) {
+    body.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+
+  body.innerHTML = [...filtered].reverse().map((h, i) => `
+    <tr>
+      <td style="color:var(--text-muted);">${filtered.length - i}</td>
+      <td>
+        <span style="display:flex;align-items:center;gap:8px;">
+          <i class="fas ${h.type === 'Mock Interview' ? 'fa-comments' : h.type === 'Technical Quiz' ? 'fa-code' : 'fa-calculator'}"
+             style="color:${h.type === 'Mock Interview' ? '#6ee7b7' : h.type === 'Technical Quiz' ? '#60a5fa' : '#f59e0b'};"></i>
+          ${h.type || 'Session'}
+        </span>
+      </td>
+      <td style="text-transform:capitalize;">${h.domain || '–'}</td>
+      <td>${h.questions || '–'}</td>
+      <td style="font-family:var(--font-display);font-weight:700;color:${h.score >= 75 ? '#6ee7b7' : h.score >= 60 ? '#f59e0b' : '#ef4444'};">${h.score}%</td>
+      <td><span class="badge ${h.score >= 60 ? 'badge-pass' : 'badge-fail'}">${h.score >= 60 ? 'Pass' : 'Fail'}</span></td>
+      <td style="color:var(--text-muted);font-size:0.83rem;">${h.date || '–'}</td>
+    </tr>
+  `).join('');
+}
+
+function clearHistory() {
+  if (confirm('Are you sure you want to clear all session history?')) {
+    localStorage.removeItem('sessionHistory');
+    renderHistory();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', renderHistory);
+</script>
+</body>
+</html>
