@@ -5,7 +5,11 @@ Backend: Python Flask + MySQL
 
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
+
 from routes.auth import auth_bp
 from routes.questions import questions_bp
 from routes.sessions import sessions_bp

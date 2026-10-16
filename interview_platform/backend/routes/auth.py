@@ -12,6 +12,9 @@ import re
 
 from utils.db import query, execute
 from utils.auth_helper import generate_token, token_required
+from utils.db import query, execute
+from utils.auth_helper import generate_token, token_required
+from utils.google_sheets import log_successful_login
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -68,7 +71,10 @@ def login():
     if not user or not check_password_hash(user['password_hash'], password):
         return jsonify({'error': 'Invalid email or password.'}), 401
 
+    
     token = generate_token(user['id'], user['email'])
+
+    log_successful_login(user['email'])
 
     return jsonify({
         'token': token,
